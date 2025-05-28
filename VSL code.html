@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>To-Do List App</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      width: 300px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .input-group {
+      display: flex;
+      margin-bottom: 1rem;
+    }
+    #task-input {
+      flex: 1;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px 0 0 4px;
+    }
+    #add-task {
+      padding: 0.5rem 1rem;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+    }
+    #add-task:hover {
+      background: #218838;
+    }
+    #task-list {
+      list-style: none;
+    }
+    .task {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem;
+      border-bottom: 1px solid #ddd;
+    }
+    .task.completed span {
+      text-decoration: line-through;
+      color: #888;
+    }
+    .task button {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .task button:hover {
+      background: #c82333;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <h1>To-Do List</h1>
+    <div class="input-group">
+      <input type="text" id="task-input" placeholder="Enter a task" autocomplete="off" />
+      <button id="add-task" type="button">Add</button>
+    </div>
+    <ul id="task-list"></ul>
+  </main>
+
+  <script>
+    const taskInput = document.getElementById("task-input");
+    const addTaskBtn = document.getElementById("add-task");
+    const taskList = document.getElementById("task-list");
+
+    addTaskBtn.addEventListener("click", addTask);
+    taskInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") addTask();
+    });
+
+    function addTask() {
+      const taskText = taskInput.value.trim();
+      if (!taskText) return;
+
+      const li = document.createElement("li");
+      li.className = "task";
+
+      const span = document.createElement("span");
+      span.textContent = taskText;
+      span.title = "Click to toggle complete";
+      span.addEventListener("click", () => {
+        li.classList.toggle("completed");
+      });
+
+      const deleteBtn = document.createElement("button");
+      deleteBtn.textContent = "X";
+      deleteBtn.title = "Delete task";
+      deleteBtn.addEventListener("click", () => {
+        li.remove();
+      });
+
+      li.appendChild(span);
+      li.appendChild(deleteBtn);
+      taskList.appendChild(li);
+
+      taskInput.value = "";
+      taskInput.focus();
+    }
+  </script>
+</body>
+</html>
