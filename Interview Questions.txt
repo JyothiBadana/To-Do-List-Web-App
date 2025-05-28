@@ -1,0 +1,40 @@
+
+
+**JavaScript Interview Questions & Answers**
+
+
+
+1. How do you select elements in the DOM?
+   Use methods like `document.getElementById()`, `document.querySelector()`, and `document.querySelectorAll()`.
+
+2. What are event listeners?
+   Functions that respond to user actions, attached using `addEventListener()`.
+
+3. Explain event delegation.
+   Using one event listener on a parent to manage events on child elements via bubbling.
+
+4. How do you prevent default behavior in JS?
+   Call `event.preventDefault()` inside an event handler.
+
+5. What is the difference between var, let, and const?
+
+* var: function-scoped, can be redeclared and updated.
+* let: block-scoped, can be updated but not redeclared.
+* const: block-scoped, cannot be updated or redeclared.
+
+6. How does bubbling and capturing work in events?
+
+* Capturing: event flows from root to target.
+* Bubbling: event flows from target to root (default).
+
+7. How do you add and remove classes in JS?
+   Use `element.classList.add('class')` and `element.classList.remove('class')`.
+
+8. What is closure in JavaScript?
+   A function that retains access to its outer scope variables even after the outer function finishes.
+
+9. Explain arrow functions.
+   Shorter syntax for functions; they don’t have their own `this` context.
+
+10. What is the difference between == and ===?
+    `==` compares values with type coercion; `===` compares value and type strictly.
